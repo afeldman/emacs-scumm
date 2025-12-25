@@ -1,6 +1,7 @@
 ;;; demo.el --- Demo game for SCUMM engine -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2025 Anton Feldmann
+;; License: GPL-3.0-or-later
 
 ;;; Commentary:
 

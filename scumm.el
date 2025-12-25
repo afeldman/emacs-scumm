@@ -7,6 +7,7 @@
 ;; Package-Requires: ((emacs "27.1"))
 ;; Keywords: games
 ;; URL: https://github.com/afeldman/emacs-scumm
+;; License: GPL-3.0-or-later
 
 ;;; Commentary:
 
@@ -27,6 +28,12 @@
 
 ;;; Code:
 
+;; Load modules from elisp directory
+(let ((scumm-dir (expand-file-name "elisp"
+                                   (file-name-directory
+                                    (or load-file-name buffer-file-name)))))
+  (add-to-list 'load-path scumm-dir))
+
 (require 'scumm-core)
 (require 'scumm-world)
 (require 'scumm-script)
@@ -46,6 +53,11 @@
                          (file-name-directory
                           (or load-file-name buffer-file-name))))
   (scumm-start-game 'kitchen))
+
+;;;###autoload
+(defun scumm-start-game (room-name)
+  "Start a game in the given ROOM-NAME."
+  (scumm-init room-name))
 
 (provide 'scumm)
 ;;; scumm.el ends here

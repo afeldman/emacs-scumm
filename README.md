@@ -12,25 +12,72 @@ A SCUMM-like adventure game engine for Emacs, written entirely in Emacs Lisp.
 - 🎨 **Text-based rendering** - Beautiful terminal-style interface with faces
 - 🔧 **Extensible** - Easy to create new games
 
+## Project Structure
+
+```
+emacs-scumm/
+├── scumm.el                 # Main entry point
+├── elisp/                   # Core modules
+│   ├── scumm.el            # Core loader
+│   ├── scumm-core.el       # Game state & control
+│   ├── scumm-world.el      # Room/object/actor definitions
+│   ├── scumm-script.el     # DSL macros
+│   ├── scumm-render.el     # UI rendering
+│   ├── scumm-input.el      # Verb commands
+│   ├── scumm-dialog.el     # Dialog system
+│   ├── scumm-inventory.el  # Inventory management
+│   └── scumm-save.el       # Save/load persistence
+├── games/                   # Game definitions
+│   └── demo.el             # Example game
+├── docs/                    # Documentation
+│   ├── API.md              # Complete API reference
+│   ├── GAME_DEVELOPMENT_GUIDE.md # Game creation guide
+│   ├── ARCHITECTURE.md     # Technical design
+│   └── GETTING_STARTED.md  # Quick start guide
+├── README.md               # This file
+├── LICENSE                 # GPL-3.0 license
+└── emacs-scumm-pkg.el     # Package descriptor
+```
+
 ## Installation
 
-### Using straight.el
+### Using straight.el (Recommended)
+
+Add to your `init.el`:
 
 ```elisp
 (use-package scumm
-  :straight (scumm :type git :host github :repo "afeldman/emacs-scumm"))
+  :straight (scumm :type git :host github :repo "afeldman/emacs-scumm")
+  :commands (scumm-start-demo scumm-start-game))
+```
+
+Or with `:demand t` to load immediately:
+
+```elisp
+(use-package scumm
+  :straight (scumm :type git :host github :repo "afeldman/emacs-scumm")
+  :demand t)
+```
+
+### Using straight.el (Minimal)
+
+```elisp
+(straight-use-package
+  '(scumm :type git :host github :repo "afeldman/emacs-scumm"))
+(require 'scumm)
 ```
 
 ### Manual Installation
 
 ```bash
+cd ~/.emacs.d/lisp  # or any directory in your load-path
 git clone https://github.com/afeldman/emacs-scumm.git
 ```
 
 Then add to your `init.el`:
 
 ```elisp
-(add-to-list 'load-path "/path/to/emacs-scumm")
+(add-to-list 'load-path "~/.emacs.d/lisp/emacs-scumm")
 (require 'scumm)
 ```
 
@@ -178,6 +225,13 @@ This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+See [LICENSE](LICENSE) for the full license text.
 
 ## Roadmap
 

@@ -1,0 +1,23 @@
+# Emacs
+*~
+*.elc
+.#*
+
+# Backups
+*.bak
+*.swp
+
+# IDE
+.vscode/
+.idea/
+
+# Save files
+scumm-saves/
+*.sav
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/

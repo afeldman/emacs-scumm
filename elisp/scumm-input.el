@@ -1,6 +1,7 @@
 ;;; scumm-input.el --- Verb commands and input handling -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2025 Anton Feldmann
+;; License: GPL-3.0-or-later
 
 ;; Author: Anton Feldmann
 ;; Keywords: games

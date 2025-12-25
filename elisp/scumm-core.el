@@ -1,6 +1,7 @@
 ;;; scumm-core.el --- Core game loop and dispatcher for SCUMM engine -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2025 Anton Feldmann
+;; License: GPL-3.0-or-later
 
 ;; Author: Anton Feldmann
 ;; Version: 0.1.0
