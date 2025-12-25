@@ -15,6 +15,9 @@
 (require 'scumm-core)
 (require 'scumm-world)
 
+;; Optional graphics support
+(require 'scumm-graphics nil t)
+
 ;;; ========== BUFFER MANAGEMENT ==========
 
 (defvar scumm-buffer-name "*SCUMM*"
@@ -65,8 +68,22 @@
         (insert text)))))
 
 (defun scumm-render-room (room-symbol)
-  "Render ROOM-SYMBOL to buffer."
+  "Render ROOM-SYMBOL to buffer.
+If graphics mode is enabled, setup split-screen layout."
   (scumm-clear-buffer)
+  
+  ;; Setup graphics layout if enabled
+  (when (and (boundp 'scumm-graphics-enabled) scumm-graphics-enabled)
+    (condition-case nil
+        (scumm-setup-graphics-layout)
+      (error nil)))
+  
+  ;; Setup graphics for this room
+  (when (and (boundp 'scumm-graphics-enabled) scumm-graphics-enabled)
+    (condition-case nil
+        (scumm-graphics-setup-for-room room-symbol)
+      (error nil)))
+  
   (let* ((room (scumm-get-room room-symbol))
          (name (or (plist-get room :name) (symbol-name room-symbol)))
          (desc (plist-get room :description))

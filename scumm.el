@@ -43,6 +43,9 @@
 (require 'scumm-inventory)
 (require 'scumm-save)
 
+;; Optional graphics support
+(require 'scumm-graphics nil t)
+
 ;;; ========== PUBLIC API ==========
 
 ;;;###autoload
