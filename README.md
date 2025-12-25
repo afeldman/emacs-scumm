@@ -1,5 +1,7 @@
 # Emacs SCUMM
 
+![Logo](logo.svg)
+
 A SCUMM-like adventure game engine for Emacs, written entirely in Emacs Lisp.
 
 ## Features
